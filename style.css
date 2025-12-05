@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --bg-color-start: #1a0b2e;
+    --bg-color-end: #110022;
+    --primary-color: #00f0ff;
+    --secondary-color: #ff00ff;
+    --text-color: #ffffff;
+    --scanline-color: rgba(0, 240, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, var(--bg-color-start), var(--bg-color-end));
+    color: var(--primary-color);
+    font-family: 'Press Start 2P', monospace;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    text-shadow: 2px 2px var(--secondary-color);
+}
+
+body::before {
+    content: " ";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            var(--scanline-color) 50%,
+            rgba(0, 0, 0, 0) 50%);
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    text-shadow: 4px 4px var(--primary-color);
+    animation: blink 1s infinite;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 4px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block;
+    color: var(--secondary-color);
+    text-shadow: 2px 2px var(--primary-color);
+}
+
+p,
+li {
+    line-height: 1.8;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    text-shadow: 1px 1px #000;
+}
+
+ul {
+    list-style-type: square;
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.pixel-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1rem;
+    padding: 15px 30px;
+    border: 4px solid var(--secondary-color);
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    box-shadow:
+        -4px 0 0 0 var(--bg-color-end),
+        4px 0 0 0 var(--bg-color-end),
+        0 -4px 0 0 var(--bg-color-end),
+        0 4px 0 0 var(--bg-color-end),
+        0 0 0 4px var(--secondary-color);
+    transition: transform 0.1s, all 0.2s;
+    width: 250px;
+    display: inline-block;
+    text-shadow: 2px 2px var(--secondary-color);
+}
+
+.pixel-btn:hover {
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    box-shadow:
+        -4px 0 0 0 var(--bg-color-end),
+        4px 0 0 0 var(--bg-color-end),
+        0 -4px 0 0 var(--bg-color-end),
+        0 4px 0 0 var(--bg-color-end),
+        0 0 0 4px var(--primary-color);
+    transform: scale(1.05);
+    text-shadow: 2px 2px var(--primary-color);
+}
+
+.pixel-btn:active {
+    transform: scale(0.95);
+}
+
+.small-btn {
+    width: auto;
+    padding: 8px 15px;
+    font-size: 0.7rem;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.back-btn-container {
+    margin-top: 3rem;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.content-box {
+    border: 4px solid var(--primary-color);
+    padding: 2rem;
+    margin-top: 2rem;
+    text-align: left;
+    background-color: rgba(20, 10, 40, 0.8);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 2px dashed var(--secondary-color);
+    padding-bottom: 5px;
+}
+
+.stat-label {
+    color: var(--primary-color);
+    text-shadow: none;
+}
+
+.stat-value {
+    color: #fff;
+    text-shadow: 1px 1px var(--secondary-color);
+}
